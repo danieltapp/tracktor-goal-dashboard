@@ -16,6 +16,9 @@ enum ActivityEmoji {
 const ProgressIndicator = ({ activities }: ProgressIndicatorProps) => {
   return (
     <div className="p-6 rounded-lg  w-full max-w-md mx-auto">
+      <div className="flex justify-center items-center mb-2">
+        <span className="text-3xl">📈</span>
+      </div>
       {activities?.map((activity) => {
         const progress = Math.min((activity.count / activity.goal) * 100, 100);
         return (
@@ -58,7 +61,7 @@ const ProgressIndicator = ({ activities }: ProgressIndicatorProps) => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5 }}
               >
-                {Math.round(progress)}%
+                {progress.toFixed(2)}%
               </motion.div>
             </div>
           </div>
