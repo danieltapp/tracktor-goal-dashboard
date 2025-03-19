@@ -24,6 +24,13 @@ const ProgressIndicator = ({ activities }: ProgressIndicatorProps) => {
         return (
           <div key={activity.activity_type} className="mb-4">
             <div className="text-gray-300 mb-2 flex justify-between">
+              <span className="ml-2">
+                {
+                  ActivityEmoji[
+                    activity.activity_type as keyof typeof ActivityEmoji
+                  ]
+                }
+              </span>
               <span>
                 {activity.activity_type === "commits"
                   ? "code commits"
@@ -39,21 +46,6 @@ const ProgressIndicator = ({ activities }: ProgressIndicatorProps) => {
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 3, ease: "easeOut" }}
               />
-
-              <motion.div
-                className="absolute top-1/2 -translate-y-1/2 text-2xl"
-                initial={{ left: 0 }}
-                animate={{ left: `${progress}%` }}
-                transition={{ duration: 3, ease: "easeOut" }}
-              >
-                <span className="ml-2">
-                  {
-                    ActivityEmoji[
-                      activity.activity_type as keyof typeof ActivityEmoji
-                    ]
-                  }
-                </span>
-              </motion.div>
 
               <motion.div
                 className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 text-white font-bold"
